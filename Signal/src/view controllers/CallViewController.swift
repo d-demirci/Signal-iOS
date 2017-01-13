@@ -548,6 +548,19 @@ class CallViewController: UIViewController, CallDelegate {
         updateCallUI(callState: call.state)
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+
+        callDurationTimer?.invalidate()
+        callDurationTimer = nil
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        updateCallUI(callState: call.state)
+    }
+
     // MARK: - Actions
 
     /**
